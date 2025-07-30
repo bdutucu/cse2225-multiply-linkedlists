@@ -1,57 +1,57 @@
-# cse2225-multiply-linkedlists
+# multiply-linkedlists
 
-This repository contains an implementation in C for performing arithmetic operations (such as addition) on large numbers represented by doubly linked lists. The project is suitable for coursework or assignments related to data structures, especially focusing on linked lists and their applications in handling large numbers beyond standard data type limits.
+This project is a C implementation for performing arithmetic (specifically, addition) on arbitrarily large decimal numbers using doubly linked lists.  
+It was developed as a homework assignment for a cse2225-Data Structures course.
 
-## Features
+## Project Purpose
 
-- **Doubly Linked List Data Structure:**  
-  Numbers are stored as linked lists where each node represents a digit (or character).
-- **Dynamic Memory Management:**  
-  Nodes are dynamically allocated and freed to handle numbers of arbitrary size.
-- **Addition Functionality:**  
-  Includes an `addition` function for adding two numbers represented by linked lists.
-- **List Manipulation Utilities:**  
-  - `append`: Add new digits to the end of the list.
-  - `reverseLinkedList`: Reverse the linked list in place.
-  - `displayList` and `displayReverseList`: Print the list forward and backward.
-  - `freeList`: Free all allocated memory.
+- **Goal:**  
+  To add two numbers (potentially with many digits and decimal points, i.e., "infinite" precision) that cannot be handled by standard C data types.
+- **Data Structure Used:**  
+  Doubly linked lists, where each node represents a single digit or the decimal point.
 
-## File Overview
+## How to Use
 
-- `150124830_prj1.c`  
-  Main source file containing definitions for all core linked list operations and the addition logic.
-- `tempCodeRunnerFile.c`  
-  Temporary or test file (contains sample includes, may not be central to the project).
+### Input
 
-## How It Works
+- You will be prompted to enter two decimal numbers.
+- These numbers can be of any length and can include a decimal point (e.g., `12345678901234567890.123456789`).
+- The program reads these numbers as input strings and converts them to linked lists for processing.
 
-1. **Creating Numbers:**  
-   Numbers are constructed by appending digits to a linked list.
-2. **Arithmetic Operations:**  
-   The addition function traverses both lists from tail to head (least to most significant digit), handling carries as needed.
-3. **Reversing and Displaying:**  
-   Utility functions allow you to reverse the linked list and display numbers in both directions.
+### Output
 
-## Example Usage
+- The result of the addition is written to a file named `output.txt`.
+- The sum is also printed on the console.
 
-```c
-Node *num1 = NULL, *tail1 = NULL;
-Node *num2 = NULL, *tail2 = NULL;
-Node *result = NULL, *tailResult = NULL;
+## Example
 
-// Building the numbers
-append(&num1, &tail1, '1');
-append(&num1, &tail1, '2');
-append(&num2, &tail2, '3');
-append(&num2, &tail2, '4');
+**Input:**  
+```
+Enter first number: 12345678901234567890.123
+Enter second number: 98765432109876543210.877
+```
 
-// Adding the numbers
-addition(tail1, tail2, &result, &tailResult);
+**Output (in `output.txt` and console):**  
+```
+111111111011111111101.000
+```
 
-// Displaying the result
-displayList(result, stdout);
+## File List
 
-// Freeing memory
-freeList(num1);
-freeList(num2);
-freeList(result);
+- `150124830_prj1.c` — Main C source file containing the doubly linked list implementation and addition logic.
+
+## Compilation & Run
+
+```sh
+gcc 150124830_prj1.c -o multiply_linkedlists
+./multiply_linkedlists
+```
+
+## Notes
+
+- The program handles numbers much larger than the limits of standard integer or floating-point types.
+- Both integer and fractional parts are supported.
+- All dynamic memory is freed after use.
+
+---
+```
